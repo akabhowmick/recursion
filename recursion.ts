@@ -29,9 +29,9 @@ function sumArray(arr) {
 // Write a recursive function that reverses a given string.
 //
 // Example Test Cases:
-console.log(reverseString("hello")); // Output: "olleh"
-console.log(reverseString("racecar")); // Output: "racecar"
-console.log(reverseString("abc")); // Output: "cba"
+// console.log(reverseString("hello")); // Output: "olleh"
+// console.log(reverseString("racecar")); // Output: "racecar"
+// console.log(reverseString("abc")); // Output: "cba"
 
 function reverseString(str) {
   if(str.length === 0) return "";
@@ -47,7 +47,9 @@ function reverseString(str) {
 // console.log(isPalindrome("a"));       // Output: true
 
 function isPalindrome(str) {
-  // Your code here
+  if(str.length === 0 || str.length === 1) return true;
+  if(str[0]!== str[str.length - 1]) return false;
+  else return isPalindrome(str.slice(1, -1));
 }
 
 // 5. Compute the N-th Fibonacci Number
@@ -60,8 +62,11 @@ function isPalindrome(str) {
 // console.log(fibonacci(0)); // Output: 0
 // console.log(fibonacci(1)); // Output: 1
 
-function fibonacci(n) {
-  // Your code here
+function fibonacci(num, memo = {}){
+  if(num in memo) return memo[num];
+  if(num <= 1) return num;
+  memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
+  return memo[num];
 }
 
 // 6. Flatten a Nested Array
