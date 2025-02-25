@@ -8,7 +8,8 @@
 // console.log(factorial(0)); // Output: 1
 
 function factorial(n) {
-  // Your code here
+  if (n === 0) return 1;
+  else return n * factorial(n - 1);
 }
 
 // 2. Sum of an Array
@@ -20,19 +21,21 @@ function factorial(n) {
 // console.log(sumArray([5])); // Output: 5
 
 function sumArray(arr) {
-  // Your code here
+  if (arr.length === 0) return 0;
+  else return arr[0] + sumArray(arr.slice(1));
 }
 
 // 3. Reverse a String
 // Write a recursive function that reverses a given string.
 //
 // Example Test Cases:
-// console.log(reverseString("hello")); // Output: "olleh"
-// console.log(reverseString("racecar")); // Output: "racecar"
-// console.log(reverseString("abc")); // Output: "cba"
+console.log(reverseString("hello")); // Output: "olleh"
+console.log(reverseString("racecar")); // Output: "racecar"
+console.log(reverseString("abc")); // Output: "cba"
 
 function reverseString(str) {
-  // Your code here
+  if(str.length === 0) return "";
+  else return reverseString(str.slice(1)) + str[0];
 }
 
 // 4. Check if a String is a Palindrome
@@ -96,5 +99,3 @@ function countOccurrences(arr, value) {
 function findMax(arr) {
   // Your code here
 }
-
-
