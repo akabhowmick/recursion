@@ -78,7 +78,9 @@ function fibonacci(num, memo = {}){
 // console.log(flattenArray([])); // Output: []
 
 function flattenArray(arr) {
-  // Your code here
+  if(arr.length === 0) return [];
+  if(Array.isArray(arr[0])) return flattenArray(arr[0]).concat(flattenArray(arr.slice(1)));
+  else return [arr[0]].concat(flattenArray(arr.slice(1)));
 }
 
 // 7. Count the Number of Occurrences of a Value in an Array
@@ -90,17 +92,21 @@ function flattenArray(arr) {
 // console.log(countOccurrences([1, 2, 3, 4, 5], 6)); // Output: 0
 
 function countOccurrences(arr, value) {
-  // Your code here
+  if(arr.length === 0) return 0;
+  if(arr[0] === value) return 1 + countOccurrences(arr.slice(1), value);
+  else return countOccurrences(arr.slice(1), value);
 }
 
 // 8. Find the Maximum Number in an Array
 // Write a recursive function that finds and returns the maximum value in an array.
 //
 // Example Test Cases:
-// console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
-// console.log(findMax([7, 7, 7, 7])); // Output: 7
-// console.log(findMax([-1, -2, -3, -4])); // Output: -1
+console.log(findMax([1, 5, 3, 9, 2])); // Output: 9
+console.log(findMax([7, 7, 7, 7])); // Output: 7
+console.log(findMax([-1, -2, -3, -4])); // Output: -1
 
 function findMax(arr) {
-  // Your code here
+  if (arr.length === 1) { return arr[0]; }
+  const max = findMax(arr.slice(1));
+  return (arr[0] > max)? arr[0] : max;
 }
